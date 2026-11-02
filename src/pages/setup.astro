@@ -1,0 +1,76 @@
+---
+// The Mac setup guide, as a page at /setup. The words live in docs/mac-setup.md,
+// so edit that file to change this page.
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Content } from '../../docs/mac-setup.md';
+---
+
+<Base title="Set up your Mac" description="Install the Claude app, then let the AI set up the rest of your Mac for building websites.">
+  <Header />
+  <main class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-20">
+    <article class="guide">
+      <Content />
+    </article>
+    <p class="mt-16 border-t border-ink/10 pt-8 text-muted">
+      Prefer slides? See the <a href="/lesson/setup" class="font-semibold text-brand underline underline-offset-4">Setup lesson</a>.
+    </p>
+  </main>
+  <Footer />
+</Base>
+
+<style is:global>
+  .guide { line-height: 1.7; font-size: 1.075rem; }
+  .guide h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  .guide h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 750; letter-spacing: -0.01em; margin: 3rem 0 1rem; }
+  .guide h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; margin: 2rem 0 0.75rem; }
+  .guide p, .guide ul, .guide ol, .guide table, .guide pre, .guide blockquote { margin-bottom: 1.1rem; }
+  .guide ul { list-style: disc; padding-left: 1.4rem; }
+  .guide ol { list-style: decimal; padding-left: 1.4rem; }
+  .guide li { margin: 0.35rem 0; }
+  .guide li::marker { color: var(--color-brand); }
+  .guide a { color: var(--color-brand); font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; }
+  .guide strong { font-weight: 700; }
+  .guide code { font-size: 0.9em; background: color-mix(in srgb, var(--color-ink) 8%, transparent); padding: 0.1em 0.35em; border-radius: 0.3em; }
+  .guide pre { position: relative; background: var(--color-ink); color: var(--color-paper); padding: 1rem 1.25rem; padding-right: 5.5rem; border-radius: 0.75rem; overflow-x: auto; font-size: 0.95rem; }
+  .guide pre code { background: none; padding: 0; }
+  .guide blockquote { position: relative; background: #fff; border-left: 4px solid var(--color-sun); border-radius: 0.25rem 0.75rem 0.75rem 0.25rem; padding: 1.25rem 1.5rem; padding-top: 3.25rem; box-shadow: 0 10px 30px -15px #0003; }
+  .guide blockquote p:last-child { margin-bottom: 0; }
+  .guide table { width: 100%; border-collapse: collapse; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .guide th, .guide td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent); vertical-align: top; }
+  .guide th { font-weight: 700; }
+
+  .copy-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    border-radius: 999px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--color-brand);
+    color: var(--color-paper);
+  }
+  .copy-btn:hover { background: var(--color-brand-dark); }
+</style>
+
+<script>
+  // Add a "Copy" button to every command and prompt, so nobody has to retype them.
+  for (const block of document.querySelectorAll<HTMLElement>('.guide pre, .guide blockquote')) {
+    const button = document.createElement('button');
+    button.className = 'copy-btn';
+    button.textContent = block.tagName === 'PRE' ? 'Copy' : 'Copy message';
+    button.addEventListener('click', async () => {
+      const text = block.tagName === 'PRE'
+        ? block.querySelector('code')?.innerText ?? ''
+        : [...block.querySelectorAll('p')].map((p) => p.innerText).join('\n\n');
+      await navigator.clipboard.writeText(text.trim());
+      const label = button.textContent;
+      button.textContent = 'Copied ✓';
+      setTimeout(() => (button.textContent = label), 1500);
+    });
+    block.append(button);
+  }
+</script>

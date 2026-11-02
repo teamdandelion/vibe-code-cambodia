@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* Fonts are installed from npm (not Google Fonts) so the site works offline. */
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/kantumruy-pro";
+
+/*
+  BRAND SETTINGS — change these to restyle the whole site.
+  Every color class like `bg-brand` or `text-ink` comes from here.
+*/
+@theme {
+  --color-ink: #1d1a2e;        /* main text */
+  --color-paper: #fbf7f0;      /* page background */
+  --color-brand: #e2552f;      /* main accent (buttons, highlights) */
+  --color-brand-dark: #b83d1c;
+  --color-sun: #f4b33d;        /* second accent */
+  --color-leaf: #2f7d63;       /* third accent */
+  --color-muted: #6b6578;      /* quieter text */
+
+  /* Khmer is listed in every font stack so Khmer text always renders well. */
+  --font-sans: "Inter Variable", "Kantumruy Pro Variable", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Kantumruy Pro Variable", system-ui, sans-serif;
+  --font-khmer: "Kantumruy Pro Variable", system-ui, sans-serif;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Khmer script needs a little more line height than English. */
+:lang(km) {
+  font-family: var(--font-khmer);
+  line-height: 1.8;
+}
