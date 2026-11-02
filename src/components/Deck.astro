@@ -223,6 +223,15 @@ const { deck } = Astro.props;
   /* Never crop images in two-col: show the whole picture, as big as fits. */
   .layout-two-col .slide-inner img { display: block; margin: 0 auto; max-width: 100%; max-height: 70cqh; object-fit: contain; }
 
+  /* Khmer captions on slides: a quieter second voice under the English.
+     No colored highlights, muted, tucked close to its English line. */
+  .slide-inner .km { margin-top: 0; line-height: 1.5; opacity: 0.7; }
+  .slide-inner .km strong { color: inherit; font-weight: 600; }
+  .slide-inner :is(h1, h2, h3) > .km { font-weight: 500; opacity: 0.65; }
+  .slide-inner li .km { font-size: 0.8em; }
+  .slide-inner li:has(.km) { margin: 0.55em 0; }
+  .slide-inner p:has(> .km) { margin-bottom: 0.9em; }
+
   /* <span class="google-logo"><i>G</i><i>o</i>…</span> → the Google colors */
   .google-logo { font-weight: 600; }
   .google-logo i { font-style: normal; }
