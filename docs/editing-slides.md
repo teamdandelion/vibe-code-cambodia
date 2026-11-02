@@ -41,7 +41,7 @@ Put a layout comment anywhere in a slide to change how it looks:
 | `<!-- layout: section -->` | Full brand-color background, for starting a new part |
 | `<!-- layout: statement -->` | Dark background, one big centered message |
 | `<!-- layout: two-col -->` | Two columns, split by a line with only `::right::` |
-| `<!-- layout: photo -->` | The slide's first image fills the whole screen, with the text on top |
+| `<!-- layout: photo -->` | The slide's first image fills the whole screen, with the text on top. A second image shows as a small card in the top-right corner |
 | `<!-- layout: gallery -->` | Heading, then all the slide's images in a neat grid |
 | `<!-- layout: image -->` | One picture, as big as fits the screen, never cropped. Good for maps and diagrams |
 | `<!-- layout: cards -->` | Each list item becomes a card (numbered if it's a `1.` list). Start each item with a short title line, then a blank line, then the description |
