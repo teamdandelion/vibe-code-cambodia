@@ -314,10 +314,9 @@ Pick **one** business or project you'd want a website for.
 
 Yours, your family's, a friend's, or a dream one.
 
-Then get your Mac ready with the **[setup guide →](/setup)**
+Then get your Mac ready: **[cambodia.dandelion.art/setup](/setup)**
 
 <!-- notes:
 Give examples from the whiteboard list of interests. Tell them tomorrow they build it.
-Write the setup guide's full address on the whiteboard (this site's address + /setup),
-so they can open it at home. Anyone who gets stuck can finish setup with you tomorrow morning.
+Write cambodia.dandelion.art/setup on the whiteboard too, so they can open it at home. Anyone who gets stuck can finish setup with you tomorrow morning.
 -->
