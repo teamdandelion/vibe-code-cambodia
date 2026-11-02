@@ -38,7 +38,8 @@ Wait for their answer. If something is missing, make a sensible guess rather tha
   - Contact or location, with the main action again
 - `src/components/Header.astro` and `Footer.astro`: update the name and links.
 - Write real, specific placeholder copy that fits their business, not "Lorem ipsum". Use emoji or simple CSS shapes instead of images for now.
-- If they chose Khmer or both: write the Khmer text with `lang="km"` on those elements, and tell them to ask a Khmer speaker to check it.
+- If they chose Khmer: write the Khmer text with `lang="km"` on those elements. If they chose both: keep the English and put a Khmer caption under each line with `<span class="km" lang="km">…</span>`, the way this template's homepage does. Either way, tell them to ask a Khmer speaker to check it.
+- If they chose English only: remove the `km` caption lines and `<span class="km">` elements from the homepage, header, and footer.
 - The site must look good on a phone.
 
 ## 4. Check and hand off

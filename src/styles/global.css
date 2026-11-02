@@ -36,3 +36,25 @@ html {
   font-family: var(--font-khmer);
   line-height: 1.8;
 }
+
+/*
+  KHMER CAPTIONS — <span class="km" lang="km"> under an English line.
+  In Markdown, write a line starting with "km:" (see docs/editing-slides.md).
+  In .astro pages, use <span class="km" lang="km">…</span>; Tailwind classes on it
+  (like text-xl) win over these defaults, because these sit in the components layer.
+*/
+@layer components {
+  .km {
+    display: block;
+    margin-top: 0.1em;
+    font-size: 0.85em;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+  /* Inside a heading, the caption is a smaller line under the heading text. */
+  :is(h2, h3) > .km { margin-top: 0.3em; font-size: 0.6em; font-weight: 600; letter-spacing: 0; }
+  h1 > .km { margin-top: 0.3em; font-size: 0.5em; font-weight: 600; letter-spacing: 0; }
+}
+

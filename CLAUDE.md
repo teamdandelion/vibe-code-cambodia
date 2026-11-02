@@ -42,7 +42,7 @@ New pages: a file at `src/pages/about.astro` becomes the page `/about`.
 - **Style with Tailwind classes** and the theme colors (`bg-brand`, `text-ink`, `bg-paper`, `text-muted`, `bg-sun`, `bg-leaf`). To change the site's colors, edit `@theme` in `global.css` instead of hunting through every page.
 - **Every page must look good on phones.** Design for small screens first, then add `sm:`/`md:`/`lg:` classes for bigger screens. Many visitors in Cambodia will only use a phone.
 - **Keep it simple.** This is a static site. Don't add React, a database, a backend, or new npm packages unless the person asks for something that truly needs one. If they do, explain the tradeoff first.
-- **Khmer text:** put `lang="km"` on elements that contain Khmer (e.g. `<p lang="km">`) so the Khmer font and line spacing apply. Suggest that a native speaker checks any Khmer you write.
+- **Khmer text:** put `lang="km"` on elements that contain Khmer (e.g. `<p lang="km">`) so the Khmer font and line spacing apply. For a bilingual site, put a Khmer caption under each English line with `<span class="km" lang="km">…</span>` (in Markdown: a line starting with `km:`; see `docs/editing-slides.md`). Suggest that a native speaker checks any Khmer you write.
 - **Images:** put them in `public/`, always add an `alt` description, and keep files small (under ~300 KB) for slow connections.
 - **Contact forms:** a static site can't send email by itself. The simplest option is a free form service (like Formspree) or a `mailto:` link. Explain this before building one.
 

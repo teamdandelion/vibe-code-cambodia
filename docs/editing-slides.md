@@ -69,6 +69,26 @@ Keep photos under about 300 KB (around 1600 pixels wide) so slides load fast on 
 
 To add a new layout, add its name to `LAYOUTS` in `src/lib/decks.ts` and add `.layout-yourname` styles in `src/components/Deck.astro`.
 
+## Khmer captions
+
+Put a line starting with `km:` right under any line to show a Khmer caption beneath it:
+
+```md
+## The goal
+km: គោលដៅ
+
+Build a website by vibe coding.
+km: បង្កើតគេហទំព័រ តាមរយៈ vibe coding។
+
+- A bullet
+  km: ចំណុចមួយ
+
+> A prompt
+> km: សំណើមួយ
+```
+
+In tables, and in image captions, use `<span class="km" lang="km">ខ្មែរ</span>`, or for an image add the Khmer after ` | `: `![alt](/photo.jpg "Caption | ចំណងជើង")`.
+
 ## Speaker notes
 
 ```md

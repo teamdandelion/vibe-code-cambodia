@@ -12,6 +12,7 @@
 //   <!-- layout: statement -->
 //   ## Second slide
 //   <!-- notes: Only the presenter sees this. -->
+//   km: ខ្មែរ               <- a Khmer caption shown under the line above it
 
 import { marked } from 'marked';
 
@@ -36,6 +37,9 @@ export interface Deck {
   slug: string;
   title: string;
   subtitle: string;
+  /** Khmer versions of the title and subtitle (optional). */
+  titleKm: string;
+  subtitleKm: string;
   /** Small label above the title, e.g. "Day 1". */
   eyebrow: string;
   /** Drafts show up in `npm run dev` but are left out of the live site. */
@@ -44,15 +48,32 @@ export interface Deck {
   slides: Slide[];
 }
 
+const km = (text: string) => `<span class="km" lang="km">${text}</span>`;
+
 // An image with a title becomes a captioned figure:  ![alt text](/photo.jpg "Caption")
+// Add a Khmer caption after " | ":                    ![alt text](/photo.jpg "Caption | ខ្មែរ")
 marked.use({
   renderer: {
     image({ href, title, text }) {
       const img = `<img src="${href}" alt="${text}" loading="lazy">`;
-      return title ? `<span class="figure">${img}<span class="caption">${title}</span></span>` : img;
+      if (!title) return img;
+      const [en, kh] = title.split(' | ');
+      return `<span class="figure">${img}<span class="caption">${en}${kh ? km(kh) : ''}</span></span>`;
     },
   },
 });
+
+/**
+ * Markdown → HTML, plus Khmer captions: any line starting with `km:` (also inside
+ * lists and > quotes) becomes a small Khmer line under the text above it.
+ */
+export function renderMarkdown(md: string): string {
+  const withCaptions = md
+    // A caption right under a heading becomes part of that heading.
+    .replace(/^(#{1,6}[ \t].+)\n[ \t]*km:[ \t]*(.+)$/gm, (_, heading, text) => `${heading} ${km(text)}`)
+    .replace(/^([ \t>]*)km:[ \t]*(.+)$/gm, (_, prefix, text) => prefix + km(text));
+  return marked.parse(withCaptions, { async: false });
+}
 
 const files = import.meta.glob('../content/decks/*.md', {
   query: '?raw',
@@ -120,8 +141,8 @@ function parseSlide(source: string, index: number): Slide {
   return {
     index,
     layout,
-    html: marked.parse(left, { async: false }),
-    rightHtml: layout === 'two-col' && right ? marked.parse(right, { async: false }) : undefined,
+    html: renderMarkdown(left),
+    rightHtml: layout === 'two-col' && right ? renderMarkdown(right) : undefined,
     background,
     notes: notes.length ? marked.parse(notes.join('\n\n'), { async: false }) : '',
     heading,
@@ -137,6 +158,8 @@ export function getDecks(): Deck[] {
         slug,
         title: data.title ?? slug,
         subtitle: data.subtitle ?? '',
+        titleKm: data.title_km ?? '',
+        subtitleKm: data.subtitle_km ?? '',
         eyebrow: data.eyebrow ?? '',
         draft: data.draft === 'true',
         order: Number(data.order ?? 99),

@@ -4,17 +4,19 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { Content } from '../../docs/mac-setup.md';
+import guide from '../../docs/mac-setup.md?raw';
+import { renderMarkdown } from '../lib/decks';
 ---
 
 <Base title="Set up your Mac" description="Install the Claude app, then let the AI set up the rest of your Mac for building websites.">
   <Header />
   <main class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-20">
     <article class="guide">
-      <Content />
+      <Fragment set:html={renderMarkdown(guide)} />
     </article>
     <p class="mt-16 border-t border-ink/10 pt-8 text-muted">
       Prefer slides? See the <a href="/lesson/setup" class="font-semibold text-brand underline underline-offset-4">Setup lesson</a>.
+      <span class="km" lang="km">ចូលចិត្តស្លាយជាង? មើលមេរៀនរៀបចំកុំព្យូទ័រ។</span>
     </p>
   </main>
   <Footer />
@@ -53,24 +55,41 @@ import { Content } from '../../docs/mac-setup.md';
     background: var(--color-brand);
     color: var(--color-paper);
   }
+  .copy-btn:lang(km), .copy-btn:nth-of-type(2) { font-family: var(--font-khmer); }
   .copy-btn:hover { background: var(--color-brand-dark); }
 </style>
 
 <script>
-  // Add a "Copy" button to every command and prompt, so nobody has to retype them.
-  for (const block of document.querySelectorAll<HTMLElement>('.guide pre, .guide blockquote')) {
+  // Add "Copy" buttons to every command and prompt, so nobody has to retype them.
+  // Prompts get two: one copies the English, the other copies the Khmer caption lines.
+  const english = (p: HTMLElement) => {
+    const clone = p.cloneNode(true) as HTMLElement;
+    clone.querySelectorAll('.km').forEach((km) => km.remove());
+    return clone.innerText.trim();
+  };
+  const khmer = (p: HTMLElement) => [...p.querySelectorAll<HTMLElement>('.km')].map((km) => km.innerText.trim()).join(' ');
+
+  function addButton(block: HTMLElement, label: string, getText: () => string, offset = 0) {
     const button = document.createElement('button');
     button.className = 'copy-btn';
-    button.textContent = block.tagName === 'PRE' ? 'Copy' : 'Copy message';
+    button.textContent = label;
+    if (offset) button.style.right = `${offset}rem`;
     button.addEventListener('click', async () => {
-      const text = block.tagName === 'PRE'
-        ? block.querySelector('code')?.innerText ?? ''
-        : [...block.querySelectorAll('p')].map((p) => p.innerText).join('\n\n');
-      await navigator.clipboard.writeText(text.trim());
-      const label = button.textContent;
+      await navigator.clipboard.writeText(getText());
       button.textContent = 'Copied ✓';
       setTimeout(() => (button.textContent = label), 1500);
     });
     block.append(button);
+  }
+
+  for (const pre of document.querySelectorAll<HTMLElement>('.guide pre')) {
+    addButton(pre, 'Copy', () => pre.querySelector('code')?.innerText.trim() ?? '');
+  }
+  for (const quote of document.querySelectorAll<HTMLElement>('.guide blockquote')) {
+    const paragraphs = [...quote.querySelectorAll<HTMLElement>('p')];
+    addButton(quote, 'Copy message', () => paragraphs.map(english).join('\n\n'));
+    if (quote.querySelector('.km')) {
+      addButton(quote, 'ចម្លងជាភាសាខ្មែរ', () => paragraphs.map(khmer).filter(Boolean).join('\n\n'), 9);
+    }
   }
 </script>
