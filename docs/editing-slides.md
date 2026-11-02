@@ -43,6 +43,7 @@ Put a layout comment anywhere in a slide to change how it looks:
 | `<!-- layout: two-col -->` | Two columns, split by a line with only `::right::` |
 | `<!-- layout: photo -->` | The slide's first image fills the whole screen, with the text on top |
 | `<!-- layout: gallery -->` | Heading, then all the slide's images in a neat grid |
+| `<!-- layout: cards -->` | Each list item becomes a card (numbered if it's a `1.` list). Start each item with a short title line, then a blank line, then the description |
 
 ```md
 <!-- layout: two-col -->

@@ -16,7 +16,7 @@
 
 import { marked } from 'marked';
 
-export const LAYOUTS = ['default', 'title', 'section', 'statement', 'two-col', 'photo', 'gallery'] as const;
+export const LAYOUTS = ['default', 'title', 'section', 'statement', 'two-col', 'photo', 'gallery', 'cards'] as const;
 export type Layout = (typeof LAYOUTS)[number];
 
 export interface Slide {

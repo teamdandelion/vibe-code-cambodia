@@ -245,17 +245,34 @@ Proof in the pudding. Pull up the homepage on your phone to show it's a real, li
 
 ---
 
+<!-- layout: cards -->
+
 ## How we vibe code
 km: របៀបដែលយើង vibe code
 
-1. **Choose a stack:** the set of technology the AI will use
-   km: **ជ្រើសរើស stack**៖ បណ្តុំបច្ចេកវិទ្យាដែល AI នឹងប្រើ
-2. **Prompt:** describe the site you want to the AI
-   km: **Prompt**៖ ពិពណ៌នាប្រាប់ AI អំពីគេហទំព័រដែលអ្នកចង់បាន
-3. **Iterate:** check the result, tell the AI what to improve. Repeat!
-   km: **កែលម្អម្តងហើយម្តងទៀត**៖ ពិនិត្យលទ្ធផល ហើយប្រាប់ AI ពីអ្វីដែលត្រូវកែ។ ធ្វើម្តងទៀត!
-4. **Ship it:** publish it to the internet
-   km: **ដាក់ឱ្យប្រើ**៖ ផ្សព្វផ្សាយវានៅលើអ៊ីនធឺណិត
+1. Choose a stack
+   km: ជ្រើសរើស stack
+
+   The set of technology the AI will use
+   km: បណ្តុំបច្ចេកវិទ្យាដែល AI នឹងប្រើ
+
+2. Prompt
+   km: ប្រាប់ AI
+
+   Describe the site you want to the AI
+   km: ពិពណ៌នាប្រាប់ AI អំពីគេហទំព័រដែលអ្នកចង់បាន
+
+3. Iterate
+   km: កែលម្អម្តងហើយម្តងទៀត
+
+   Check the result, tell the AI what to improve. Repeat!
+   km: ពិនិត្យលទ្ធផល ហើយប្រាប់ AI ពីអ្វីដែលត្រូវកែ។ ធ្វើម្តងទៀត!
+
+4. Ship it
+   km: ដាក់ឱ្យប្រើ
+
+   Publish it to the internet
+   km: ផ្សព្វផ្សាយវានៅលើអ៊ីនធឺណិត
 
 <!-- notes:
 Stack: a marketing website, an online shop, and a tour booking site each need different
@@ -266,18 +283,31 @@ Say each new word out loud ("stack", "prompt", "iterate", "ship") and have the r
 
 ---
 
+<!-- layout: cards -->
+
 ## The plan
 km: ផែនការ
 
 I've already **chosen a stack** for you, and made a **starting point** you can all use. It's the same one this website is built with.
 km: ខ្ញុំបាន**ជ្រើសរើស stack** រួចហើយសម្រាប់អ្នក ហើយបានរៀបចំ**ចំណុចចាប់ផ្តើម**មួយដែលអ្នកទាំងអស់គ្នាអាចប្រើបាន។ វាដូចគ្នានឹងអ្វីដែលគេហទំព័រនេះប្រើ។
 
-1. **Today:** watch me vibe code a website, live
-   km: **ថ្ងៃនេះ**៖ មើលខ្ញុំ vibe code គេហទំព័រមួយផ្ទាល់
-2. **Tomorrow:** you vibe code your own
-   km: **ថ្ងៃស្អែក**៖ អ្នក vibe code គេហទំព័ររបស់អ្នកផ្ទាល់
-3. **After that:** make it better, ask anything, show it off
-   km: **បន្ទាប់មក**៖ កែលម្អវា សួរអ្វីក៏បាន ហើយបង្ហាញវាដល់អ្នកដទៃ
+1. Today
+   km: ថ្ងៃនេះ
+
+   Watch me vibe code a website, live
+   km: មើលខ្ញុំ vibe code គេហទំព័រមួយផ្ទាល់
+
+2. Tomorrow
+   km: ថ្ងៃស្អែក
+
+   You vibe code your own
+   km: អ្នក vibe code គេហទំព័ររបស់អ្នកផ្ទាល់
+
+3. After that
+   km: បន្ទាប់មក
+
+   Make it better, ask anything, show it off
+   km: កែលម្អវា សួរអ្វីក៏បាន ហើយបង្ហាញវាដល់អ្នកដទៃ
 
 <!-- notes:
 By the end, each of you has your own website, live on the internet, that you know how to keep improving.
@@ -301,15 +331,28 @@ Target: ~45 minutes. Narrate every prompt out loud before you type it.
 
 ---
 
+<!-- layout: cards -->
+
 ## What to watch for
 km: អ្វីដែលត្រូវសង្កេតមើល
 
-- What I **ask** for, in plain words
-  km: អ្វីដែលខ្ញុំ**ស្នើសុំ** ជាពាក្យសាមញ្ញ
-- How the AI **answers**
-  km: របៀបដែល AI **ឆ្លើយតប**
-- What I do when it gets something **wrong**
-  km: អ្វីដែលខ្ញុំធ្វើ នៅពេលវាធ្វើអ្វីមួយ**ខុស**
+- 💬 Asking
+  km: ការស្នើសុំ
+
+  What I ask for, in plain words
+  km: អ្វីដែលខ្ញុំស្នើសុំ ជាពាក្យសាមញ្ញ
+
+- 🤖 Answering
+  km: ការឆ្លើយតប
+
+  How the AI answers
+  km: របៀបដែល AI ឆ្លើយតប
+
+- 🧭 Steering
+  km: ការដឹកនាំ
+
+  What I do when it gets something wrong
+  km: អ្វីដែលខ្ញុំធ្វើ នៅពេលវាធ្វើអ្វីមួយខុស
 
 AI makes mistakes. Steering it is the real skill.
 km: AI អាចធ្វើខុសបាន។ ការដឹកនាំវាឱ្យត្រូវ គឺជាជំនាញពិតប្រាកដ។
