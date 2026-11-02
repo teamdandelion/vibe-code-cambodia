@@ -16,7 +16,7 @@
 
 import { marked } from 'marked';
 
-export const LAYOUTS = ['default', 'title', 'section', 'statement', 'two-col', 'photo', 'gallery', 'cards'] as const;
+export const LAYOUTS = ['default', 'title', 'section', 'statement', 'two-col', 'photo', 'gallery', 'cards', 'image'] as const;
 export type Layout = (typeof LAYOUTS)[number];
 
 export interface Slide {
@@ -55,7 +55,8 @@ const km = (text: string) => `<span class="km" lang="km">${text}</span>`;
 marked.use({
   renderer: {
     image({ href, title, text }) {
-      const img = `<img src="${href}" alt="${text}" loading="lazy">`;
+      const attr = (v: string) => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+      const img = `<img src="${attr(href)}" alt="${attr(text)}" loading="lazy">`;
       if (!title) return img;
       const [en, kh] = title.split(' | ');
       return `<span class="figure">${img}<span class="caption">${en}${kh ? km(kh) : ''}</span></span>`;
