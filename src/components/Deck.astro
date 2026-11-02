@@ -22,6 +22,7 @@ const { deck } = Astro.props;
           aria-label={`Slide ${slide.index + 1}`}
         >
           {slide.background && <img class="slide-bg" src={slide.background.src} alt={slide.background.alt} />}
+          {slide.inset && <img class="slide-inset" src={slide.inset.src} alt={slide.inset.alt} />}
           {slide.layout === 'two-col' ? (
             <div class="slide-inner">
               <div class="col" set:html={slide.html} />
@@ -207,6 +208,18 @@ const { deck } = Astro.props;
   .layout-photo .slide-inner :is(h1, h2, h3, strong) { color: #fff; text-shadow: 0 0.05em 0.4em #0006; }
   .layout-photo .slide-inner small { font-size: 0.5em; opacity: 0.7; }
   .layout-photo .slide-inner a { color: inherit; }
+  /* A second image on a photo slide: a tilted postcard in the top-right corner. */
+  .slide-inset {
+    position: absolute;
+    top: 5cqh;
+    right: 4cqw;
+    z-index: 2;
+    width: min(42cqw, 70cqh);
+    border-radius: 0.6em;
+    border: 0.35em solid #fff;
+    box-shadow: 0 1em 2.5em -0.5em #0007;
+    transform: rotate(2deg);
+  }
 
   /* Gallery: every image on the slide goes into a grid. */
   .layout-gallery .slide-inner p:has(img) {
@@ -379,6 +392,7 @@ const { deck } = Astro.props;
     .slide-inner { font-size: max(16px, 4.2cqw); max-height: none; }
     .layout-two-col .slide-inner { grid-template-columns: 1fr; gap: 1em; }
     .layout-photo .slide-inner { margin: 0 1.5rem 2rem; max-width: none; }
+    .slide-inset { width: 70cqw; top: 1.5rem; }
     .layout-gallery .slide-inner p:has(img) { grid-auto-flow: row; grid-template-columns: 1fr 1fr; }
     .layout-cards .slide-inner :is(ol, ul):has(> li:nth-child(4)) { grid-template-columns: 1fr; }
     .deck-notes { position: fixed; inset: auto 0 0 0; width: auto; height: 40dvh; }

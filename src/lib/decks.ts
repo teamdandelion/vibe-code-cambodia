@@ -27,6 +27,8 @@ export interface Slide {
   rightHtml?: string;
   /** Only used by the photo layout: the full-screen background image. */
   background?: { src: string; alt: string };
+  /** Only used by the photo layout: an optional second image, shown as a card in the top-right corner. */
+  inset?: { src: string; alt: string };
   /** Speaker notes, as HTML. */
   notes: string;
   /** First heading on the slide, used for the presenter's "next up" preview. */
@@ -126,12 +128,16 @@ function parseSlide(source: string, index: number): Slide {
     return '';
   });
 
-  // The photo layout uses the slide's first image as a full-screen background.
+  // The photo layout uses the slide's first image as a full-screen background,
+  // and a second image (if any) as a card in the top-right corner.
   let background: Slide['background'];
+  let inset: Slide['inset'];
   let body = content;
   if (layout === 'photo') {
-    body = content.replace(/!\[([^\]]*)\]\(([^)\s]+)[^)]*\)/, (_, alt, src) => {
-      background = { src, alt };
+    body = content.replace(/!\[([^\]]*)\]\(([^)\s]+)[^)]*\)/g, (match, alt, src) => {
+      if (!background) background = { src, alt };
+      else if (!inset) inset = { src, alt };
+      else return match;
       return '';
     });
   }
@@ -145,6 +151,7 @@ function parseSlide(source: string, index: number): Slide {
     html: renderMarkdown(left),
     rightHtml: layout === 'two-col' && right ? renderMarkdown(right) : undefined,
     background,
+    inset,
     notes: notes.length ? marked.parse(notes.join('\n\n'), { async: false }) : '',
     heading,
   };

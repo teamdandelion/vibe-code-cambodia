@@ -32,19 +32,8 @@ km: សួស្តី ខ្ញុំឈ្មោះ Dandelion!
 ![Dandelion at sunset in Bali, with a volcano behind](/decks/day-1/headshot.jpg)
 
 <!-- notes:
-Keep the whole intro (this slide and the next four) under 3 minutes.
+Keep the whole intro (this slide and the next three) under 3 minutes.
 This photo is from Bali: mention you've traveled around Southeast Asia, and that you're happy to be in Cambodia.
--->
-
----
-
-<!-- layout: image -->
-
-![Illustrated world map: "Hello from Seattle!", with a dotted line across the Pacific from Cambodia to Seattle, USA](/decks/day-1/map.webp)
-
-<!-- notes:
-AI-generated map, so everyone can see where Seattle is: across the Pacific, on the west coast of the USA.
-Trace the dotted line with your hand. (Fun aside: this image was made by AI too.)
 -->
 
 ---
@@ -52,6 +41,7 @@ Trace the dotted line with your hand. (Fun aside: this image was made by AI too.
 <!-- layout: photo -->
 
 ![Hundreds of coots on Lake Washington, with Seward Park behind](/decks/day-1/seattle.jpg)
+![Illustrated world map: "Hello from Seattle!", with a dotted line across the Pacific from Cambodia to Seattle, USA](/decks/day-1/map.webp)
 
 ## I live in Seattle, Washington, USA
 km: ខ្ញុំរស់នៅទីក្រុងស៊ីអាថល រដ្ឋវ៉ាស៊ីនតោន សហរដ្ឋអាមេរិក
@@ -60,6 +50,8 @@ Near Seward Park, on Lake Washington.
 km: នៅជិតឧទ្យាន Seward Park ក្បែរបឹង Lake Washington។
 
 <!-- notes:
+Point at the map first: Seattle is across the Pacific, on the west coast of the USA.
+Trace the dotted line from Cambodia. (Fun aside: the map was made by AI.)
 It's rainy, green, and full of tech companies.
 Fun opener: "Guess how many birds!" (They're coots. Huge flocks spend the winter on the lake.)
 -->
