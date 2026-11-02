@@ -217,11 +217,71 @@ const { deck } = Astro.props;
   }
   .layout-gallery .slide-inner img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; max-height: 60cqh; border-radius: 0.5em; }
 
+  /* Cards: each list item becomes a card. Numbered lists get a number badge.
+     4 items → 2×2 grid; otherwise as many columns as there are items (up to 3). */
+  .layout-cards .slide-inner :is(ol, ul) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12em), 1fr));
+    gap: 0.8em;
+    margin: 0.8em 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: card;
+  }
+  .layout-cards .slide-inner :is(ol, ul):has(> li:nth-child(4)) { grid-template-columns: 1fr 1fr; }
+  .layout-cards .slide-inner li {
+    position: relative;
+    margin: 0;
+    padding: 0.8em 1em;
+    border-radius: 0.6em;
+    background: #fff;
+    box-shadow: 0 0.6em 1.6em -1em #0003;
+    counter-increment: card;
+  }
+  .layout-cards .slide-inner ol > li { padding-left: 3.2em; }
+  .layout-cards .slide-inner ol > li::before {
+    content: counter(card);
+    position: absolute;
+    left: 0.8em;
+    top: 0.8em;
+    display: grid;
+    place-items: center;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 999px;
+    background: var(--color-brand);
+    color: var(--color-paper);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95em;
+  }
+  .layout-cards .slide-inner li p { margin: 0; }
+  /* The first line of a card is its title. */
+  .layout-cards .slide-inner li > p:first-child { margin-bottom: 0.35em; font-family: var(--font-display); font-size: 1.15em; font-weight: 700; color: var(--color-brand-dark); }
+  .layout-cards .slide-inner li > p:first-child strong { color: inherit; }
+  .layout-cards .slide-inner li > p:first-child .km { font-family: var(--font-khmer); font-size: 0.75em; font-weight: 600; }
+  .layout-cards .slide-inner li > p:not(:first-child) { font-size: 0.9em; line-height: 1.4; }
+  .layout-cards .slide-inner li .km { font-size: 0.85em; }
+
+  /* Image: one picture, as big as fits, never cropped (good for maps and diagrams). */
+  .layout-image .slide-inner { width: 94cqw; max-height: 94cqh; text-align: center; }
+  .layout-image .slide-inner p:has(img) { margin: 0; }
+  .layout-image .slide-inner img { display: block; margin: 0 auto; width: 100%; max-height: 90cqh; object-fit: contain; border-radius: 0.6em; }
+
   /* Captioned images:  ![alt](/photo.jpg "Caption") */
   .slide-inner .figure { display: flex; flex-direction: column; gap: 0.3em; }
   .slide-inner .caption { font-size: 0.7em; color: var(--color-muted); text-align: center; }
   /* Never crop images in two-col: show the whole picture, as big as fits. */
   .layout-two-col .slide-inner img { display: block; margin: 0 auto; max-width: 100%; max-height: 70cqh; object-fit: contain; }
+
+  /* Khmer captions on slides: a quieter second voice under the English.
+     No colored highlights, muted, tucked close to its English line. */
+  .slide-inner .km { margin-top: 0; line-height: 1.5; opacity: 0.7; }
+  .slide-inner .km strong { color: inherit; font-weight: 600; }
+  .slide-inner :is(h1, h2, h3) > .km { font-weight: 500; opacity: 0.65; }
+  .slide-inner li .km { font-size: 0.8em; }
+  .slide-inner li:has(.km) { margin: 0.55em 0; }
+  .slide-inner p:has(> .km) { margin-bottom: 0.9em; }
 
   /* <span class="google-logo"><i>G</i><i>o</i>…</span> → the Google colors */
   .google-logo { font-weight: 600; }
@@ -320,6 +380,7 @@ const { deck } = Astro.props;
     .layout-two-col .slide-inner { grid-template-columns: 1fr; gap: 1em; }
     .layout-photo .slide-inner { margin: 0 1.5rem 2rem; max-width: none; }
     .layout-gallery .slide-inner p:has(img) { grid-auto-flow: row; grid-template-columns: 1fr 1fr; }
+    .layout-cards .slide-inner :is(ol, ul):has(> li:nth-child(4)) { grid-template-columns: 1fr; }
     .deck-notes { position: fixed; inset: auto 0 0 0; width: auto; height: 40dvh; }
   }
 

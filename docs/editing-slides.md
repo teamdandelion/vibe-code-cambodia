@@ -43,6 +43,8 @@ Put a layout comment anywhere in a slide to change how it looks:
 | `<!-- layout: two-col -->` | Two columns, split by a line with only `::right::` |
 | `<!-- layout: photo -->` | The slide's first image fills the whole screen, with the text on top |
 | `<!-- layout: gallery -->` | Heading, then all the slide's images in a neat grid |
+| `<!-- layout: image -->` | One picture, as big as fits the screen, never cropped. Good for maps and diagrams |
+| `<!-- layout: cards -->` | Each list item becomes a card (numbered if it's a `1.` list). Start each item with a short title line, then a blank line, then the description |
 
 ```md
 <!-- layout: two-col -->
@@ -68,6 +70,26 @@ Put image files in `public/` (for example `public/decks/day-1/seattle.jpg`) and 
 Keep photos under about 300 KB (around 1600 pixels wide) so slides load fast on slow internet.
 
 To add a new layout, add its name to `LAYOUTS` in `src/lib/decks.ts` and add `.layout-yourname` styles in `src/components/Deck.astro`.
+
+## Khmer captions
+
+Put a line starting with `km:` right under any line to show a Khmer caption beneath it:
+
+```md
+## The goal
+km: គោលដៅ
+
+Build a website by vibe coding.
+km: បង្កើតគេហទំព័រ តាមរយៈ vibe coding។
+
+- A bullet
+  km: ចំណុចមួយ
+
+> A prompt
+> km: សំណើមួយ
+```
+
+In tables, and in image captions, use `<span class="km" lang="km">ខ្មែរ</span>`, or for an image add the Khmer after ` | `: `![alt](/photo.jpg "Caption | ចំណងជើង")`.
 
 ## Speaker notes
 
