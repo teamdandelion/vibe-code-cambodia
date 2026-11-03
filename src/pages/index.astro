@@ -116,8 +116,8 @@ const starterPrompt = [
     km: 'គ្រូរបស់ខ្ញុំបានបង្កើត GitHub template repo teamdandelion/vibe-code-cambodia ដើម្បីជួយខ្ញុំចាប់ផ្តើម។ សូមជួយខ្ញុំ ម្តងមួយជំហាន៖',
   },
   {
-    en: '1. Set up my computer for software development. It may be a Mac or Windows. (For a Mac, the repo has a guide in docs/mac-setup.md. For Windows, use the Windows versions of the same tools.)\n2. Make a GitHub account if I don’t have one, and connect it to this computer.\n3. Make my own repo from the template, and get the website running on my computer.\n4. Help me turn it into my own website.',
-    km: '១. រៀបចំកុំព្យូទ័ររបស់ខ្ញុំសម្រាប់ការអភិវឌ្ឍកម្មវិធី។ វាអាចជា Mac ឬ Windows។ (សម្រាប់ Mac, repo មានការណែនាំនៅក្នុង docs/mac-setup.md។ សម្រាប់ Windows សូមប្រើកំណែ Windows នៃឧបករណ៍ដូចគ្នា។)\n២. បង្កើតគណនី GitHub ប្រសិនបើខ្ញុំមិនទាន់មាន ហើយភ្ជាប់វាទៅកុំព្យូទ័រនេះ។\n៣. បង្កើត repo ផ្ទាល់ខ្លួនរបស់ខ្ញុំពី template ហើយធ្វើឱ្យគេហទំព័រដំណើរការនៅលើកុំព្យូទ័ររបស់ខ្ញុំ។\n៤. ជួយខ្ញុំប្តូរវាឱ្យក្លាយជាគេហទំព័រផ្ទាល់ខ្លួនរបស់ខ្ញុំ។',
+    en: '1. Set up my computer for software development. It may be a Mac or Windows. (The repo has guides in docs/mac-setup.md and docs/windows-setup.md.)\n2. Make a GitHub account if I don’t have one, and connect it to this computer.\n3. Make my own repo from the template, and get the website running on my computer.\n4. Help me turn it into my own website.',
+    km: '១. រៀបចំកុំព្យូទ័ររបស់ខ្ញុំសម្រាប់ការអភិវឌ្ឍកម្មវិធី។ វាអាចជា Mac ឬ Windows។ (repo មានការណែនាំនៅក្នុង docs/mac-setup.md និង docs/windows-setup.md។)\n២. បង្កើតគណនី GitHub ប្រសិនបើខ្ញុំមិនទាន់មាន ហើយភ្ជាប់វាទៅកុំព្យូទ័រនេះ។\n៣. បង្កើត repo ផ្ទាល់ខ្លួនរបស់ខ្ញុំពី template ហើយធ្វើឱ្យគេហទំព័រដំណើរការនៅលើកុំព្យូទ័ររបស់ខ្ញុំ។\n៤. ជួយខ្ញុំប្តូរវាឱ្យក្លាយជាគេហទំព័រផ្ទាល់ខ្លួនរបស់ខ្ញុំ។',
   },
   {
     en: 'Ask me questions to find out what I’d like to build, and work with me. Explain each step before you do it, and wait for me when I need to do something myself.',
@@ -129,13 +129,13 @@ const promptKm = starterPrompt.map((b) => b.km).join('\n\n');
 
 const startSteps = [
   {
-    text: 'Install the Claude app (Mac or Windows) and sign in.',
-    km: 'ដំឡើងកម្មវិធី Claude (Mac ឬ Windows) ហើយចូលគណនី។',
-    link: { href: 'https://claude.ai/download', label: 'Download', labelKm: 'ទាញយក' },
+    text: 'Install the Claude app and sign in. On Windows, install Git first.',
+    km: 'ដំឡើងកម្មវិធី Claude ហើយចូលគណនី។ នៅលើ Windows សូមដំឡើង Git ជាមុនសិន។',
+    link: { href: '/setup', label: 'How?', labelKm: 'ធ្វើដូចម្តេច?' },
   },
   {
-    text: 'Open the Code tab. On Windows, if it asks for Git, install it from git-scm.com first.',
-    km: 'បើកផ្ទាំង Code។ នៅលើ Windows ប្រសិនបើវាសុំ Git សូមដំឡើងវាពី git-scm.com ជាមុនសិន។',
+    text: 'Open the Code tab.',
+    km: 'បើកផ្ទាំង Code។',
   },
   { text: 'Copy this message, paste it in, and press Enter.', km: 'ចម្លងសារនេះ បិទភ្ជាប់វា ហើយចុច Enter។' },
 ];
@@ -222,7 +222,7 @@ const startSteps = [
                   <p class="pt-1">
                     {step.text}{' '}
                     {step.link && (
-                      <a href={step.link.href} target="_blank" rel="noopener" class="font-semibold text-brand underline underline-offset-2">
+                      <a href={step.link.href} class="font-semibold text-brand underline underline-offset-2">
                         {step.link.label} <span lang="km" class="font-khmer font-normal">{step.link.labelKm}</span>
                       </a>
                     )}
@@ -343,10 +343,10 @@ const startSteps = [
           href="/setup"
           class="group flex flex-col rounded-2xl border border-ink/10 bg-white p-6 transition hover:-translate-y-1 hover:border-brand hover:shadow-xl"
         >
-          <span class="font-display text-sm font-bold tracking-wide text-brand uppercase">Guide · Mac</span>
+          <span class="font-display text-sm font-bold tracking-wide text-brand uppercase">Guide</span>
           <span class="mt-2 font-display text-2xl font-bold">
-            Set up your Mac
-            <span class="km text-lg" lang="km">រៀបចំកុំព្យូទ័រ Mac របស់អ្នក</span>
+            Set up your computer
+            <span class="km text-lg" lang="km">រៀបចំកុំព្យូទ័ររបស់អ្នក</span>
           </span>
           <span class="mt-2 flex-1 text-muted">
             Install the Claude app, then let the AI set up the rest of your computer.

@@ -4,9 +4,9 @@ This is a real website that you can copy and change into **your own** website, j
 
 Right now it's the website for a vibe coding workshop at New Hope Cambodia. It has a homepage, plus the workshop's slides at `/lesson`.
 
-## New Mac? Set it up first
+## New computer? Set it up first
 
-Follow the setup guide: it's at `/setup` on the website, or **[docs/mac-setup.md](docs/mac-setup.md)** here. You install the Claude app, then the AI helps you install everything else.
+Follow the setup guide: it's at `/setup` on the website, or here: **[Mac](docs/mac-setup.md)** · **[Windows](docs/windows-setup.md)**. You install the Claude app, then the AI helps you install everything else.
 
 ## Make your own copy
 
