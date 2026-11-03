@@ -423,8 +423,8 @@ km: ជ្រើសរើសអាជីវកម្ម ឬគម្រោង**�
 Yours, your family's, a friend's, or a dream one.
 km: របស់អ្នក របស់គ្រួសារ របស់មិត្តភក្តិ ឬគម្រោងក្នុងក្តីស្រមៃ។
 
-Then get your Mac ready: **[cambodia.dandelion.art/setup](/setup)**
-km: បន្ទាប់មក រៀបចំកុំព្យូទ័រ Mac របស់អ្នកឱ្យរួចរាល់។
+Then get your computer ready: **[cambodia.dandelion.art/setup](/setup)**
+km: បន្ទាប់មក រៀបចំកុំព្យូទ័ររបស់អ្នកឱ្យរួចរាល់។
 
 <!-- notes:
 Give examples from the whiteboard list of interests. Tell them tomorrow they build it.

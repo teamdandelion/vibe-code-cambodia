@@ -22,7 +22,7 @@ Wait for their answer. If something is missing, make a sensible guess rather tha
 ## 2. Remove the workshop content
 
 - Delete `src/content/decks/day-1.md`, `day-2.md`, `day-3.md`, and `setup.md`, and delete `src/pages/lesson/index.astro` and `src/pages/setup.astro`.
-- Keep `src/pages/lesson/[deck].astro`, `src/lib/decks.ts`, `src/components/Deck.astro`, and `docs/` (the slide and Mac setup guides). With no deck files, no slide pages get built, but if they add a deck later (like a pitch deck), it just works.
+- Keep `src/pages/lesson/[deck].astro`, `src/lib/decks.ts`, `src/components/Deck.astro`, and `docs/` (the slide and computer setup guides). With no deck files, no slide pages get built, but if they add a deck later (like a pitch deck), it just works.
 - Remove links to `/lesson` and `/setup` from `src/components/Header.astro` and anywhere else they appear.
 
 ## 3. Rebuild the site around their idea

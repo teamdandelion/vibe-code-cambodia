@@ -31,7 +31,7 @@ The person you're helping is most likely a **beginner** at a workshop in Cambodi
 | Shared page frame (`<head>`, fonts) | `src/layouts/Base.astro` |
 | Slide decks (Markdown) | `src/content/decks/*.md` → shown at `/lesson/<file-name>` |
 | How to write slides | `docs/editing-slides.md` |
-| Setting up a Mac for development | `docs/mac-setup.md` (shown on the site at `/setup` by `src/pages/setup.astro`) |
+| Setting up a computer for development | `docs/mac-setup.md` and `docs/windows-setup.md` (shown on the site at `/setup` by `src/pages/setup.astro`) |
 | Images and other files | `public/` (a file at `public/photo.jpg` is used as `/photo.jpg`) |
 | Cloudflare settings | `wrangler.jsonc` |
 
@@ -56,7 +56,7 @@ New pages: a file at `src/pages/about.astro` becomes the page `/about`.
 
 ## Helping set up their computer
 
-If they ask for help installing tools (Homebrew, git, Node, VS Code…), follow `docs/mac-setup.md`. Explain each tool in one sentence before installing it. For anything that needs their Mac password (`sudo`, the Homebrew installer) or opens a popup, give them the exact command to paste into Terminal themselves (remind them: ⌘ Space, type Terminal, Return), and wait for them to say it's done. Use nvm for Node, with the version in `.nvmrc`.
+If they ask for help installing tools (Homebrew, git, Node, VS Code…), follow `docs/mac-setup.md` on a Mac or `docs/windows-setup.md` on Windows. Explain each tool in one sentence before installing it. For anything that needs their Mac password (`sudo`, the Homebrew installer) or opens a popup, give them the exact command to paste into Terminal themselves (remind them: ⌘ Space, type Terminal, Return), and wait for them to say it's done. On Windows, the same goes for administrator popups, using PowerShell (Windows key, type PowerShell, Enter). Use nvm for Node on a Mac, with the version in `.nvmrc`; on Windows, install the Node.js LTS with winget.
 
 ## Making the site your own
 
