@@ -25,7 +25,7 @@ From here, just ask for what you want: *"make the headline bigger"*, *"add a sec
 1. Log in to [Cloudflare](https://dash.cloudflare.com).
 2. Go to **Workers & Pages** → **Create** → **Import a repository**.
 3. Connect your GitHub account and choose your repository.
-4. Keep the default settings (build command `npm run build`, deploy command `npx wrangler deploy`) and click **Deploy**.
+4. Keep the default settings (build command `npm run build`, deploy command `npx wrangler deploy`) and click **Deploy**. If the build command box is empty, that's fine too: the deploy builds the site itself.
 
 A minute later you'll have a link like `my-bakery-site.your-name.workers.dev`. That's your live website.
 
