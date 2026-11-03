@@ -52,6 +52,7 @@ New pages: a file at `src/pages/about.astro` becomes the page `/about`.
 - Pushing any other branch, or opening a pull request, creates a **preview link** without changing the live site.
 - When asked to "save" or "publish", commit with a short, clear message and push. Explain: a commit is a save point; push sends it to GitHub.
 - Never force-push or rewrite history unless they explicitly ask and understand what it means.
+- If a Cloudflare build fails, first check that `"name"` in `wrangler.jsonc` matches the Worker name in the Cloudflare dashboard. That mismatch is the most common cause.
 
 ## Helping set up their computer
 
