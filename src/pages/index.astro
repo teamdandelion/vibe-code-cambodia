@@ -52,10 +52,10 @@ const needs = [
     textKm: 'អាជីវកម្ម គម្រោង ក្លឹប — អ្វីក៏បានដែលអ្នកចង់មានគេហទំព័រ។',
   },
   {
-    title: 'A Mac',
-    titleKm: 'កុំព្យូទ័រ Mac',
-    text: 'You will set it up yourself, with the AI as your guide.',
-    textKm: 'អ្នកនឹងរៀបចំវាដោយខ្លួនឯង ដោយមាន AI ជាអ្នកណែនាំ។',
+    title: 'A computer',
+    titleKm: 'កុំព្យូទ័រមួយ',
+    text: 'Mac or Windows. You will set it up yourself, with the AI as your guide.',
+    textKm: 'Mac ឬ Windows។ អ្នកនឹងរៀបចំវាដោយខ្លួនឯង ដោយមាន AI ជាអ្នកណែនាំ។',
   },
   {
     title: 'A GitHub account',
@@ -99,6 +99,46 @@ const faqs = [
 ];
 
 const decks = getDecks();
+
+// The "Get started" prompt that students copy into Claude. Each block is one
+// paragraph; the copy buttons join them with blank lines.
+const starterPrompt = [
+  {
+    en: 'I’m a student in Cambodia, learning to use Claude Code to build software. My instructor gave me this message to start with.',
+    km: 'ខ្ញុំជាសិស្សនៅកម្ពុជា កំពុងរៀនប្រើ Claude Code ដើម្បីបង្កើតកម្មវិធី។ គ្រូរបស់ខ្ញុំបានផ្តល់សារនេះឱ្យខ្ញុំ សម្រាប់ចាប់ផ្តើម។',
+  },
+  {
+    en: 'Please don’t assume I know anything about programming, or that I speak English well. Use short, simple English, and add a Khmer translation under your messages. If I write in Khmer, reply in Khmer.',
+    km: 'សូមកុំសន្មតថាខ្ញុំចេះអ្វីអំពីការសរសេរកម្មវិធី ឬថាខ្ញុំចេះភាសាអង់គ្លេសច្បាស់។ សូមប្រើភាសាអង់គ្លេសខ្លីៗ និងសាមញ្ញ ហើយបន្ថែមការបកប្រែជាភាសាខ្មែរនៅក្រោមសាររបស់អ្នក។ ប្រសិនបើខ្ញុំសរសេរជាភាសាខ្មែរ សូមឆ្លើយជាភាសាខ្មែរ។',
+  },
+  {
+    en: 'My instructor made the GitHub template repo teamdandelion/vibe-code-cambodia to help me get started. Please help me, one step at a time:',
+    km: 'គ្រូរបស់ខ្ញុំបានបង្កើត GitHub template repo teamdandelion/vibe-code-cambodia ដើម្បីជួយខ្ញុំចាប់ផ្តើម។ សូមជួយខ្ញុំ ម្តងមួយជំហាន៖',
+  },
+  {
+    en: '1. Set up my computer for software development. It may be a Mac or Windows. (For a Mac, the repo has a guide in docs/mac-setup.md. For Windows, use the Windows versions of the same tools.)\n2. Make a GitHub account if I don’t have one, and connect it to this computer.\n3. Make my own repo from the template, and get the website running on my computer.\n4. Help me turn it into my own website.',
+    km: '១. រៀបចំកុំព្យូទ័ររបស់ខ្ញុំសម្រាប់ការអភិវឌ្ឍកម្មវិធី។ វាអាចជា Mac ឬ Windows។ (សម្រាប់ Mac, repo មានការណែនាំនៅក្នុង docs/mac-setup.md។ សម្រាប់ Windows សូមប្រើកំណែ Windows នៃឧបករណ៍ដូចគ្នា។)\n២. បង្កើតគណនី GitHub ប្រសិនបើខ្ញុំមិនទាន់មាន ហើយភ្ជាប់វាទៅកុំព្យូទ័រនេះ។\n៣. បង្កើត repo ផ្ទាល់ខ្លួនរបស់ខ្ញុំពី template ហើយធ្វើឱ្យគេហទំព័រដំណើរការនៅលើកុំព្យូទ័ររបស់ខ្ញុំ។\n៤. ជួយខ្ញុំប្តូរវាឱ្យក្លាយជាគេហទំព័រផ្ទាល់ខ្លួនរបស់ខ្ញុំ។',
+  },
+  {
+    en: 'Ask me questions to find out what I’d like to build, and work with me. Explain each step before you do it, and wait for me when I need to do something myself.',
+    km: 'សួរខ្ញុំសំណួរ ដើម្បីដឹងថាខ្ញុំចង់បង្កើតអ្វី ហើយធ្វើការជាមួយខ្ញុំ។ ពន្យល់ជំហាននីមួយៗ មុនពេលអ្នកធ្វើវា ហើយរង់ចាំខ្ញុំ នៅពេលខ្ញុំត្រូវធ្វើអ្វីមួយដោយខ្លួនឯង។',
+  },
+];
+const promptEn = starterPrompt.map((b) => b.en).join('\n\n');
+const promptKm = starterPrompt.map((b) => b.km).join('\n\n');
+
+const startSteps = [
+  {
+    text: 'Install the Claude app (Mac or Windows) and sign in.',
+    km: 'ដំឡើងកម្មវិធី Claude (Mac ឬ Windows) ហើយចូលគណនី។',
+    link: { href: 'https://claude.ai/download', label: 'Download', labelKm: 'ទាញយក' },
+  },
+  {
+    text: 'Open the Code tab. On Windows, if it asks for Git, install it from git-scm.com first.',
+    km: 'បើកផ្ទាំង Code។ នៅលើ Windows ប្រសិនបើវាសុំ Git សូមដំឡើងវាពី git-scm.com ជាមុនសិន។',
+  },
+  { text: 'Copy this message, paste it in, and press Enter.', km: 'ចម្លងសារនេះ បិទភ្ជាប់វា ហើយចុច Enter។' },
+];
 ---
 
 <Base>
@@ -125,11 +165,11 @@ const decks = getDecks();
             <span class="km" lang="km">មិនចាំបាច់មានបទពិសោធន៍សរសេរកូដទេ។ ពិពណ៌នាគេហទំព័រដែលអ្នកចង់បាន មើល AI បង្កើតវា ហើយដាក់វានៅលើអ៊ីនធឺណិតត្រឹមចុងសប្តាហ៍។</span>
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href="/lesson" class="rounded-full bg-brand px-6 py-3 font-semibold text-paper shadow-lg shadow-brand/25 transition hover:bg-brand-dark">
-              See the lessons → <span lang="km" class="font-khmer font-normal opacity-80">មេរៀន</span>
+            <a href="#start" class="rounded-full bg-brand px-6 py-3 font-semibold text-paper shadow-lg shadow-brand/25 transition hover:bg-brand-dark">
+              Get started ↓ <span lang="km" class="font-khmer font-normal opacity-80">ចាប់ផ្តើម</span>
             </a>
-            <a href="#how" class="rounded-full border border-ink/15 bg-white px-6 py-3 font-semibold transition hover:border-ink/40">
-              How it works <span lang="km" class="font-khmer font-normal opacity-60">របៀបដំណើរការ</span>
+            <a href="/lesson" class="rounded-full border border-ink/15 bg-white px-6 py-3 font-semibold transition hover:border-ink/40">
+              See the lessons → <span lang="km" class="font-khmer font-normal opacity-60">មេរៀន</span>
             </a>
           </div>
         </div>
@@ -159,6 +199,58 @@ const decks = getDecks();
               <div class="h-8 rounded bg-paper"></div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET STARTED: the message students paste into Claude -->
+    <section id="start" class="scroll-mt-20 border-t border-ink/10 bg-white">
+      <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1fr_1.5fr]">
+        <div>
+          <p class="font-semibold text-brand">Get started <span lang="km" class="font-khmer font-normal">· ចាប់ផ្តើម</span></p>
+          <h2 class="mt-2 font-display text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">Send this message to Claude.</h2>
+          <p class="km mt-3 text-xl font-semibold sm:text-2xl" lang="km">ផ្ញើសារនេះទៅ Claude។</p>
+          <p class="mt-4 text-lg text-muted">
+            Claude will help you set up your computer and build your website, one step at a time.
+            <span class="km" lang="km">Claude នឹងជួយអ្នករៀបចំកុំព្យូទ័រ និងបង្កើតគេហទំព័ររបស់អ្នក ម្តងមួយជំហាន។</span>
+          </p>
+          <ol class="mt-8 space-y-4">
+            {
+              startSteps.map((step, i) => (
+                <li class="flex gap-4">
+                  <span class="grid size-8 shrink-0 place-items-center rounded-full bg-brand font-display font-bold text-paper">{i + 1}</span>
+                  <p class="pt-1">
+                    {step.text}{' '}
+                    {step.link && (
+                      <a href={step.link.href} target="_blank" rel="noopener" class="font-semibold text-brand underline underline-offset-2">
+                        {step.link.label} <span lang="km" class="font-khmer font-normal">{step.link.labelKm}</span>
+                      </a>
+                    )}
+                    <span class="km text-muted" lang="km">{step.km}</span>
+                  </p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+
+        <div class="relative rounded-2xl border-l-4 border-sun bg-paper p-5 pt-16 shadow-xl shadow-ink/5 sm:p-8 sm:pt-16">
+          <div class="absolute top-4 right-4 left-4 flex flex-wrap justify-end gap-2 sm:left-auto">
+            <button type="button" class="prompt-copy rounded-full bg-brand px-4 py-1.5 text-sm font-semibold text-paper transition hover:bg-brand-dark" data-copy={promptEn}>
+              Copy message
+            </button>
+            <button type="button" lang="km" class="prompt-copy rounded-full border border-brand px-4 py-1.5 font-khmer text-sm font-semibold text-brand transition hover:bg-brand hover:text-paper" data-copy={promptKm}>
+              ចម្លងជាភាសាខ្មែរ
+            </button>
+          </div>
+          {
+            starterPrompt.map((block) => (
+              <p class="mb-4 whitespace-pre-line last:mb-0">
+                {block.en}
+                <span class="km text-muted whitespace-pre-line" lang="km">{block.km}</span>
+              </p>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -251,7 +343,7 @@ const decks = getDecks();
           href="/setup"
           class="group flex flex-col rounded-2xl border border-ink/10 bg-white p-6 transition hover:-translate-y-1 hover:border-brand hover:shadow-xl"
         >
-          <span class="font-display text-sm font-bold tracking-wide text-brand uppercase">Guide</span>
+          <span class="font-display text-sm font-bold tracking-wide text-brand uppercase">Guide · Mac</span>
           <span class="mt-2 font-display text-2xl font-bold">
             Set up your Mac
             <span class="km text-lg" lang="km">រៀបចំកុំព្យូទ័រ Mac របស់អ្នក</span>
@@ -336,3 +428,26 @@ const decks = getDecks();
 
   <Footer />
 </Base>
+
+<script>
+  // "Copy message" buttons on the Get started prompt.
+  for (const button of document.querySelectorAll<HTMLButtonElement>('.prompt-copy')) {
+    const label = button.textContent;
+    button.addEventListener('click', async () => {
+      const text = button.dataset.copy ?? '';
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        // Older browsers: copy through a hidden text box instead.
+        const box = document.createElement('textarea');
+        box.value = text;
+        document.body.append(box);
+        box.select();
+        document.execCommand('copy');
+        box.remove();
+      }
+      button.textContent = button.lang === 'km' ? 'បានចម្លង ✓' : 'Copied ✓';
+      setTimeout(() => (button.textContent = label), 2000);
+    });
+  }
+</script>
