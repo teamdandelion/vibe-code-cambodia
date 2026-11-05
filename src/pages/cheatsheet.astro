@@ -1,0 +1,24 @@
+---
+// The cheat sheet on its own page, handy for printing. The content lives in
+// src/components/CheatSheet.astro (also shown at the top of the homepage).
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CheatSheet from '../components/CheatSheet.astro';
+---
+
+<Base title="Claude Code Cheat Sheet" description="From an idea to a live website: Claude Code, GitHub, Cloudflare, and your own domain name. In English and Khmer.">
+  <Header />
+  <main class="px-4 py-10 sm:px-6 sm:py-14">
+    <CheatSheet />
+  </main>
+  <Footer />
+</Base>
+
+<style is:global>
+  /* Print only the cheat sheet, not the site's header and footer. */
+  @media print {
+    body > header, body > footer { display: none; }
+    html, body { background: #fff; }
+  }
+</style>

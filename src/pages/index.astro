@@ -5,7 +5,23 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CheatSheet from '../components/CheatSheet.astro';
 import { getDecks } from '../lib/decks';
+
+const getClaude = [
+  {
+    text: 'Go to <strong>claude.ai/download</strong> and install the app for your computer (Mac or Windows).',
+    km: 'ចូលទៅកាន់ <strong>claude.ai/download</strong> ហើយដំឡើងកម្មវិធីសម្រាប់កុំព្យូទ័ររបស់អ្នក (Mac ឬ Windows)។',
+  },
+  {
+    text: 'Open Claude and <strong>sign in</strong> with your Claude account.',
+    km: 'បើក Claude ហើយ<strong>ចូល</strong>ដោយប្រើគណនី Claude របស់អ្នក។',
+  },
+  {
+    text: 'Click <strong>Code</strong> at the top, then follow the cheat sheet below.',
+    km: 'ចុច <strong>Code</strong> នៅខាងលើ បន្ទាប់មកធ្វើតាមសន្លឹកជំនួយខាងក្រោម។',
+  },
+];
 
 const steps = [
   {
@@ -145,6 +161,58 @@ const startSteps = [
   <Header />
 
   <main>
+    <!-- THIS SITE'S ADDRESS: big, so students can find it again -->
+    <section class="bg-ink text-paper">
+      <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+        <p class="text-sm font-semibold text-paper/70">
+          This website · <span lang="km">គេហទំព័រនេះ</span>
+        </p>
+        <p class="mt-1 font-display text-[min(7.2vw,3.75rem)] font-extrabold tracking-tight whitespace-nowrap text-sun">cambodia.dandelion.art</p>
+        <p class="mt-3 text-paper/80">
+          Remember this address. Everything you need for class is here.
+          <span class="km" lang="km">ចងចាំអាសយដ្ឋាននេះ។ អ្វីៗទាំងអស់ដែលអ្នកត្រូវការសម្រាប់ថ្នាក់រៀន មាននៅទីនេះ។</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- GET CLAUDE, then the CHEAT SHEET (src/components/CheatSheet.astro) -->
+    <section id="cheatsheet" class="scroll-mt-20 px-4 py-10 sm:px-6 sm:py-14">
+      <div class="mx-auto max-w-[1120px]">
+        <div class="mb-12 rounded-3xl border border-ink/10 bg-white p-6 sm:p-10">
+          <p class="font-semibold text-brand">Start here <span lang="km" class="font-normal">· ចាប់ផ្តើមនៅទីនេះ</span></p>
+          <h2 class="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Get the Claude app
+            <span class="km" lang="km">ទាញយកកម្មវិធី Claude</span>
+          </h2>
+          <ol class="mt-8 grid gap-4 md:grid-cols-3">
+            {
+              getClaude.map((step, i) => (
+                <li class="flex gap-4 rounded-2xl bg-paper p-5">
+                  <span class="grid size-9 shrink-0 place-items-center rounded-full bg-brand font-display font-bold text-paper">{i + 1}</span>
+                  <p class="pt-1 text-lg">
+                    <Fragment set:html={step.text} />
+                    <span class="km text-base text-muted" lang="km"><Fragment set:html={step.km} /></span>
+                  </p>
+                </li>
+              ))
+            }
+          </ol>
+          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a href="https://claude.ai/download" class="rounded-full bg-brand px-6 py-3 font-semibold text-paper shadow-lg shadow-brand/25 transition hover:bg-brand-dark">
+              Download Claude → <span lang="km" class="font-normal opacity-80">ទាញយក</span>
+            </a>
+            <p class="text-muted">
+              On Windows? Install Git first. <a href="/setup#windows" class="font-semibold text-brand underline underline-offset-2">How?</a>
+              <span class="km" lang="km">ប្រើ Windows? សូមដំឡើង Git ជាមុនសិន។</span>
+            </p>
+          </div>
+        </div>
+
+        <CheatSheet />
+      </div>
+    </section>
+
+    <!-- ABOUT THE WORKSHOP: everything below the cheat sheet -->
     <!-- HERO -->
     <section class="relative overflow-hidden">
       <div class="pointer-events-none absolute -top-40 -right-40 size-[36rem] rounded-full bg-sun/25 blur-3xl"></div>
@@ -156,9 +224,9 @@ const startSteps = [
             <span class="size-2 rounded-full bg-leaf"></span>
             A vibe coding workshop at New Hope Cambodia
           </p>
-          <h1 class="mt-6 font-display text-5xl leading-[1.02] font-extrabold tracking-tight text-balance sm:text-6xl lg:text-7xl">
+          <h2 class="mt-6 font-display text-5xl leading-[1.02] font-extrabold tracking-tight text-balance sm:text-6xl lg:text-7xl">
             Build a real website by <span class="text-brand">talking</span> to AI.
-          </h1>
+          </h2>
           <p lang="km" class="mt-4 text-xl text-ink/70">បង្កើតគេហទំព័រជាមួយ AI</p>
           <p class="mt-6 max-w-xl text-lg text-muted">
             No coding experience needed. Describe the website you want, watch the AI build it, and publish it to the internet by the end of the week.
