@@ -1,4 +1,4 @@
-# Vibe Code Cambodia
+# Vibe Code New Hope
 
 This is a real website that you can copy and change into **your own** website, just by talking to an AI.
 

@@ -60,4 +60,4 @@ If they ask for help installing tools (Homebrew, git, Node, VS Code…), follow 
 
 ## Making the site your own
 
-If this is still the workshop template (the homepage talks about the "Vibe Code Cambodia" workshop) and the person wants their own site, suggest the `/make-it-mine` command.
+If this is still the workshop template (the homepage talks about the "Vibe Code New Hope" workshop) and the person wants their own site, suggest the `/make-it-mine` command.
