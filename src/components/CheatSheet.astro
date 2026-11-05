@@ -1,0 +1,336 @@
+---
+// The Claude Code cheat sheet (made with Claude Design). Shown at the top of the
+// homepage and on its own at /cheatsheet. Screenshots live in public/cheatsheet/.
+// Edit the words right here; each English line has its Khmer line under it.
+---
+
+<div class="cheatsheet">
+  <!-- HEADER -->
+  <header style="display: flex; flex-direction: column; gap: 14px; padding: 8px 4px 12px">
+  <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+  <span style="background: #FFC83D; color: #14161A; font-weight: 700; font-size: 13px; padding: 6px 12px; border-radius: 999px; letter-spacing: 0.02em">Class refresher</span>
+  <span lang="km" style="background: #FFFFFF; color: #3F4553; font-weight: 600; font-size: 13px; padding: 4px 12px; border-radius: 999px; border: 1px solid #D9DCE3">ការរំលឹកមេរៀន</span>
+  </div>
+  <h1 style="margin: 0; font-size: clamp(36px, 6vw, 64px); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em">Claude Code Cheat Sheet</h1>
+  <p lang="km" style="margin: 0; font-size: clamp(24px, 3.4vw, 36px); font-weight: 700; color: #14161A">សន្លឹកជំនួយការចងចាំ Claude Code</p>
+  <p style="margin: 6px 0 0; font-size: 18px; color: #3F4553; max-width: 720px; line-height: 1.55">From an idea to a live website — the four tools we used, and how they fit together.</p>
+  <p lang="km" style="margin: 0; font-size: 17px; color: #3F4553; max-width: 720px">ពីគំនិតមួយ ទៅជាគេហទំព័រដែលដំណើរការលើអ៊ីនធឺណិត — ឧបករណ៍ទាំងបួនដែលយើងបានប្រើ និងរបៀបដែលវាភ្ជាប់គ្នា។</p>
+  </header>
+
+  <!-- FLOW STRIP -->
+  <nav aria-label="The workflow" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+  <a href="#claude" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1px solid #D9DCE3; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; min-height: 44px">
+  <span style="font-size: 12px; font-weight: 700; color: #5B6170; letter-spacing: 0.08em">STEP 1 · BUILD</span>
+  <span lang="km" style="font-size: 13px; color: #5B6170">ជំហានទី ១ · បង្កើត</span>
+  <span style="font-size: 20px; font-weight: 700; margin-top: 6px">Claude Code</span>
+  <span style="font-size: 14px; color: #3F4553">Writes the code</span>
+  </a>
+  <a href="#github" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1px solid #D9DCE3; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; min-height: 44px">
+  <span style="font-size: 12px; font-weight: 700; color: #5B6170; letter-spacing: 0.08em">STEP 2 · SAVE</span>
+  <span lang="km" style="font-size: 13px; color: #5B6170">ជំហានទី ២ · រក្សាទុក</span>
+  <span style="font-size: 20px; font-weight: 700; margin-top: 6px">GitHub</span>
+  <span style="font-size: 14px; color: #3F4553">Stores the code online</span>
+  </a>
+  <a href="#cloudflare" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1px solid #D9DCE3; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; min-height: 44px">
+  <span style="font-size: 12px; font-weight: 700; color: #5B6170; letter-spacing: 0.08em">STEP 3 · PUBLISH</span>
+  <span lang="km" style="font-size: 13px; color: #5B6170">ជំហានទី ៣ · ដាក់លើអ៊ីនធឺណិត</span>
+  <span style="font-size: 20px; font-weight: 700; margin-top: 6px">Cloudflare</span>
+  <span style="font-size: 14px; color: #3F4553">Makes it a public website</span>
+  </a>
+  <a href="#namecheap" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1px solid #D9DCE3; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; min-height: 44px">
+  <span style="font-size: 12px; font-weight: 700; color: #5B6170; letter-spacing: 0.08em">STEP 4 · BRAND</span>
+  <span lang="km" style="font-size: 13px; color: #5B6170">ជំហានទី ៤ · ឈ្មោះផ្ទាល់ខ្លួន</span>
+  <span style="font-size: 20px; font-weight: 700; margin-top: 6px">Namecheap</span>
+  <span style="font-size: 14px; color: #3F4553">Your own domain name</span>
+  </a>
+  </nav>
+
+  <!-- 1. CLAUDE CODE -->
+  <section id="claude" style="background: #FFFFFF; border: 1px solid #D9DCE3; border-radius: 24px; padding: clamp(22px, 4vw, 40px); display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+  <div style="flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+  <div style="display: flex; align-items: center; gap: 14px">
+  <span style="width: 44px; height: 44px; border-radius: 12px; background: #FFC83D; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; flex-shrink: 0">1</span>
+  <h2 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Claude Code</h2>
+  </div>
+  <p style="margin: 0; font-size: 19px; line-height: 1.55; font-weight: 500">Claude Code runs on your computer and writes code for you. You describe what you want in plain words — it builds it.</p>
+  <p lang="km" style="margin: 0; font-size: 18px; color: #2A2E37">Claude Code ដំណើរការលើកុំព្យូទ័ររបស់អ្នក ហើយសរសេរកូដជំនួសអ្នក។ អ្នកគ្រាន់តែពិពណ៌នាអ្វីដែលអ្នកចង់បានដោយពាក្យសាមញ្ញ — វានឹងបង្កើតវាឱ្យ។</p>
+  <div style="background: #F3F4F6; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 6px">
+  <span style="font-size: 12px; font-weight: 700; color: #5B6170; letter-spacing: 0.08em">WHERE TO CLICK · ចុចត្រង់ណា</span>
+  <p style="margin: 0; font-size: 16px; line-height: 1.55">In the Claude app, the toggle at the <strong>top</strong> switches modes: <strong>Chat</strong> is the left button, <strong>Code</strong> is the right button.</p>
+  <p lang="km" style="margin: 0; font-size: 15px; color: #2A2E37">នៅក្នុងកម្មវិធី Claude ប៊ូតុងនៅ<strong>ខាងលើ</strong>ប្រើសម្រាប់ប្តូររបៀប៖ <strong>Chat (ជជែក)</strong> នៅខាងឆ្វេង និង <strong>Code (កូដ)</strong> នៅខាងស្តាំ។</p>
+  </div>
+  </div>
+  <div style="flex: 1 1 420px; min-width: 0; max-width: 560px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+  <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px">
+  <div style="position: relative">
+  <img loading="lazy" src="/cheatsheet/chat-toggle.webp" width="520" height="537" alt="Claude app with the Chat button selected, on the left of the top toggle" style="width: 100%; border-radius: 14px; border: 1px solid #D9DCE3; display: block">
+  <span aria-hidden="true" style="position: absolute; left: 67%; top: -1%; width: 19%; height: 16.5%; border: 4px solid #FF4D2E; border-radius: 50%; box-sizing: border-box"></span>
+  </div>
+  <figcaption style="font-size: 14px; font-weight: 600">Chat <span style="font-weight: 400; color: #5B6170">· left</span></figcaption>
+  <figcaption lang="km" style="font-size: 13px; color: #5B6170; margin-top: -6px">ជជែក · ខាងឆ្វេង</figcaption>
+  </figure>
+  <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px">
+  <div style="position: relative">
+  <img loading="lazy" src="/cheatsheet/code-toggle.webp" width="520" height="425" alt="Claude app with the Code button selected, on the right of the top toggle" style="width: 100%; border-radius: 14px; border: 1px solid #D9DCE3; display: block">
+  <span aria-hidden="true" style="position: absolute; left: 81%; top: -3%; width: 20%; height: 23%; border: 4px solid #FF4D2E; border-radius: 50%; box-sizing: border-box"></span>
+  </div>
+  <figcaption style="font-size: 14px; font-weight: 600">Code <span style="font-weight: 400; color: #5B6170">· right</span></figcaption>
+  <figcaption lang="km" style="font-size: 13px; color: #5B6170; margin-top: -6px">កូដ · ខាងស្តាំ</figcaption>
+  </figure>
+  </div>
+  </section>
+
+  <!-- 2. GITHUB -->
+  <section id="github" style="background: #FFFFFF; border: 1px solid #D9DCE3; border-radius: 24px; padding: clamp(22px, 4vw, 40px); display: flex; flex-direction: column; gap: 22px">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
+  <div style="display: flex; align-items: center; gap: 14px">
+  <span style="width: 44px; height: 44px; border-radius: 12px; background: #FFC83D; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; flex-shrink: 0">2</span>
+  <h2 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">GitHub &amp; git</h2>
+  </div>
+  <p style="margin: 0; font-size: 19px; line-height: 1.55; font-weight: 500">GitHub stores your code on the internet, so you can open it from another computer or work together with other coders. <strong>git</strong> is the tool that sends your code there.</p>
+  <p lang="km" style="margin: 0; font-size: 18px; color: #2A2E37">GitHub រក្សាទុកកូដរបស់អ្នកនៅលើអ៊ីនធឺណិត ដូច្នេះអ្នកអាចបើកវាពីកុំព្យូទ័រផ្សេង ឬសហការជាមួយអ្នកសរសេរកូដផ្សេងទៀតបាន។ <strong>git</strong> គឺជាឧបករណ៍ដែលបញ្ជូនកូដរបស់អ្នកទៅទីនោះ។</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px">
+  <div style="background: #F3F4F6; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px">
+  <span style="font-family: var(--mono); font-size: 17px; font-weight: 600">repository (repo)</span>
+  <span style="font-size: 15px; color: #3F4553">Your project's folder on GitHub</span>
+  <span lang="km" style="font-size: 15px; color: #3F4553">ថតគម្រោងរបស់អ្នកនៅលើ GitHub</span>
+  </div>
+  <div style="background: #F3F4F6; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px">
+  <span style="font-family: var(--mono); font-size: 17px; font-weight: 600">commit</span>
+  <span style="font-size: 15px; color: #3F4553">A save point for your changes</span>
+  <span lang="km" style="font-size: 15px; color: #3F4553">ចំណុចរក្សាទុកការកែប្រែរបស់អ្នក</span>
+  </div>
+  <div style="background: #F3F4F6; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px">
+  <span style="font-family: var(--mono); font-size: 17px; font-weight: 600">push</span>
+  <span style="font-size: 15px; color: #3F4553">Upload your commits to GitHub</span>
+  <span lang="km" style="font-size: 15px; color: #3F4553">បញ្ជូនការរក្សាទុករបស់អ្នកទៅ GitHub</span>
+  </div>
+  </div>
+  <div style="border: 1px dashed #B9BEC9; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 4px">
+  <span style="font-size: 15px"><strong>Tip:</strong> you don't need to type git commands — just tell Claude: <span style="font-family: var(--mono); background: #F3F4F6; padding: 2px 8px; border-radius: 6px; font-size: 14px">commit and push my changes</span></span>
+  <span lang="km" style="font-size: 15px; color: #3F4553"><strong>គន្លឹះ៖</strong> អ្នកមិនចាំបាច់វាយពាក្យបញ្ជា git ទេ — គ្រាន់តែប្រាប់ Claude ថា «commit and push my changes»</span>
+  </div>
+  </section>
+
+  <!-- 3. CLOUDFLARE -->
+  <section id="cloudflare" style="background: #FFFFFF; border: 1px solid #D9DCE3; border-radius: 24px; padding: clamp(22px, 4vw, 40px); display: flex; flex-direction: column; gap: 26px">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
+  <div style="display: flex; align-items: center; gap: 14px">
+  <span style="width: 44px; height: 44px; border-radius: 12px; background: #FFC83D; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; flex-shrink: 0">3</span>
+  <h2 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Cloudflare</h2>
+  </div>
+  <p style="margin: 0; font-size: 19px; line-height: 1.55; font-weight: 500">Cloudflare puts your code on the internet as a public website, with a free <strong>workers.dev</strong> address.</p>
+  <p lang="km" style="margin: 0; font-size: 18px; color: #2A2E37">Cloudflare ដាក់កូដរបស់អ្នកលើអ៊ីនធឺណិត ជាគេហទំព័រសាធារណៈ ដោយមានអាសយដ្ឋាន <strong>workers.dev</strong> ឥតគិតថ្លៃ។</p>
+  </div>
+
+  <!-- URL anatomy -->
+  <div class="dark" style="background: #14161A; color: #FFFFFF; border-radius: 18px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px">
+  <span style="font-size: 12px; font-weight: 700; color: #C9CDD6; letter-spacing: 0.08em">YOUR WEBSITE ADDRESS · អាសយដ្ឋានគេហទំព័ររបស់អ្នក</span>
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 4px; font-family: var(--mono); font-size: clamp(18px, 3vw, 28px); font-weight: 600">
+  <div style="display: flex; flex-direction: column; gap: 6px">
+  <span style="color: #FFC83D">my-site</span>
+  <span style="font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: #C9CDD6">project name</span>
+  <span lang="km" style="font-size: 13px; font-weight: 400; color: #C9CDD6">ឈ្មោះគម្រោង</span>
+  </div>
+  <span>.</span>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+  <span style="color: #93C5FD">my-account</span>
+  <span style="font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: #C9CDD6">account name</span>
+  <span lang="km" style="font-size: 13px; font-weight: 400; color: #C9CDD6">ឈ្មោះគណនី</span>
+  </div>
+  <span>.</span>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+  <span>workers.dev</span>
+  <span style="font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: #C9CDD6">free from Cloudflare</span>
+  <span lang="km" style="font-size: 13px; font-weight: 400; color: #C9CDD6">ឥតគិតថ្លៃពី Cloudflare</span>
+  </div>
+  </div>
+  </div>
+
+  <!-- Change account name -->
+  <div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: center; background: #F3F4F6; border-radius: 18px; padding: 22px">
+  <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+  <span style="font-size: 12px; font-weight: 700; color: #5B6170; letter-spacing: 0.08em">CHANGE YOUR ACCOUNT NAME · ប្តូរឈ្មោះគណនី</span>
+  <p style="margin: 0; font-size: 17px; line-height: 1.5">Don't like <span style="font-family: var(--mono); font-size: 15px">my-account</span>? On the Workers &amp; Pages page, find <strong>Account details</strong> and click the <strong>pencil</strong> next to <strong>Subdomain</strong>. Note: this changes the address of every site on your account.</p>
+  <p lang="km" style="margin: 0; font-size: 16px; color: #3F4553">មិនចូលចិត្តឈ្មោះ <span style="font-family: var(--mono); font-size: 15px">my-account</span>? នៅលើទំព័រ Workers &amp; Pages រក <strong>Account details</strong> ហើយចុច<strong>រូបខ្មៅដៃ</strong>នៅជាប់ <strong>Subdomain</strong>។ ចំណាំ៖ វានឹងប្តូរអាសយដ្ឋានរបស់គេហទំព័រទាំងអស់ក្នុងគណនីរបស់អ្នក។</p>
+  </div>
+  <div style="flex: 1 1 320px; min-width: 0; max-width: 420px; position: relative">
+  <img loading="lazy" src="/cheatsheet/cloudflare-subdomain.webp" width="700" height="297" alt="Cloudflare Account details card with the Subdomain field and its pencil edit icon" style="width: 100%; border-radius: 12px; display: block">
+  <span aria-hidden="true" style="position: absolute; left: 84%; top: 57%; width: 11%; height: 28%; border: 4px solid #FF4D2E; border-radius: 50%; box-sizing: border-box"></span>
+  </div>
+  </div>
+
+  <!-- Steps -->
+  <div style="display: flex; flex-direction: column; gap: 18px">
+
+  <div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: center; border-top: 1px solid #E5E7EB; padding-top: 22px">
+  <div style="flex: 1 1 340px; min-width: 0; display: flex; gap: 14px">
+  <span style="width: 32px; height: 32px; border-radius: 999px; border: 2px solid #14161A; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0">a</span>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+  <p style="margin: 0; font-size: 17px; line-height: 1.5">Open <strong>Workers &amp; Pages</strong> and click the blue <strong>Create application</strong> button.</p>
+  <p lang="km" style="margin: 0; font-size: 16px; color: #3F4553">បើក <strong>Workers &amp; Pages</strong> រួចចុចប៊ូតុងពណ៌ខៀវ <strong>Create application</strong>។</p>
+  </div>
+  </div>
+  <img loading="lazy" src="/cheatsheet/cloudflare-create-app.webp" width="1000" height="205" alt="Workers and Pages screen with the Create application button" style="flex: 1 1 420px; min-width: 0; max-width: 100%; border-radius: 12px; border: 1px solid #D9DCE3; display: block">
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: center; border-top: 1px solid #E5E7EB; padding-top: 22px">
+  <div style="flex: 1 1 340px; min-width: 0; display: flex; gap: 14px">
+  <span style="width: 32px; height: 32px; border-radius: 999px; border: 2px solid #14161A; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0">b</span>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+  <p style="margin: 0; font-size: 17px; line-height: 1.5">Click <strong>Continue with GitHub</strong>, then pick your repository and deploy. Each time you push to GitHub, your site updates by itself.</p>
+  <p lang="km" style="margin: 0; font-size: 16px; color: #3F4553">ចុច <strong>Continue with GitHub</strong> បន្ទាប់មកជ្រើសរើស repository របស់អ្នក ហើយ deploy។ រាល់ពេលអ្នក push ទៅ GitHub គេហទំព័ររបស់អ្នកនឹងធ្វើបច្ចុប្បន្នភាពដោយខ្លួនឯង។</p>
+  </div>
+  </div>
+  <img loading="lazy" src="/cheatsheet/cloudflare-continue-github.webp" width="800" height="634" alt="Make something new screen with the Continue with GitHub button" style="flex: 1 1 360px; min-width: 0; max-width: 460px; border-radius: 12px; border: 1px solid #D9DCE3; display: block">
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 18px; background: #FFF6E0; border: 2px solid #B45309; border-radius: 18px; padding: 22px">
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+  <span style="background: #B45309; color: #FFFFFF; font-weight: 800; font-size: 12px; letter-spacing: 0.08em; padding: 6px 12px; border-radius: 999px">IMPORTANT · សំខាន់</span>
+  <span style="font-size: 14px; color: #7A3410; font-weight: 600">Don't skip this step!</span>
+  <span lang="km" style="font-size: 14px; color: #7A3410; font-weight: 600">កុំរំលងជំហាននេះ!</span>
+  </div>
+  <div style="display: flex; gap: 14px">
+  <span style="width: 32px; height: 32px; border-radius: 999px; border: 2px solid #14161A; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0; background: #FFFFFF">c</span>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+  <p style="margin: 0; font-size: 17px; line-height: 1.5">Open the <strong>Domains</strong> tab and turn <strong>ON</strong> the toggles next to your <strong>workers.dev</strong> URLs (they turn blue). If they're off, your website address won't open.</p>
+  <p lang="km" style="margin: 0; font-size: 16px; color: #3F4553">បើកផ្ទាំង <strong>Domains</strong> ហើយបើក (<strong>ON</strong>) ប៊ូតុងបិទ/បើក នៅជាប់អាសយដ្ឋាន <strong>workers.dev</strong> របស់អ្នក (វានឹងប្រែជាពណ៌ខៀវ)។ ប្រសិនបើវាបិទ អាសយដ្ឋានគេហទំព័ររបស់អ្នកនឹងមិនបើកទេ។</p>
+  </div>
+  </div>
+  <img loading="lazy" src="/cheatsheet/cloudflare-domains-toggle.webp" width="1300" height="312" alt="Domains tab showing the workers.dev Production and Preview URLs with their toggles switched on" style="width: 100%; border-radius: 12px; border: 1px solid #E8C98A; display: block; background: #FFFFFF">
+  </div>
+
+  </div>
+  </section>
+
+  <!-- 4. NAMECHEAP -->
+  <section id="namecheap" style="background: #FFFFFF; border: 1px solid #D9DCE3; border-radius: 24px; padding: clamp(22px, 4vw, 40px); display: flex; flex-wrap: wrap; gap: 28px; align-items: center">
+  <div style="flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+  <div style="display: flex; align-items: center; gap: 14px">
+  <span style="width: 44px; height: 44px; border-radius: 12px; background: #FFC83D; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; flex-shrink: 0">4</span>
+  <h2 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Namecheap</h2>
+  </div>
+  <p style="margin: 0; font-size: 19px; line-height: 1.55; font-weight: 500">Namecheap lets you buy a cheap domain name when you want your own custom address instead of workers.dev.</p>
+  <p lang="km" style="margin: 0; font-size: 18px; color: #2A2E37">Namecheap អនុញ្ញាតឱ្យអ្នកទិញឈ្មោះដែន (domain) ក្នុងតម្លៃថោក នៅពេលអ្នកចង់បានអាសយដ្ឋានផ្ទាល់ខ្លួន ជំនួសឱ្យ workers.dev។</p>
+  <div style="border: 1px dashed #B9BEC9; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 4px">
+  <span style="font-size: 15px; line-height: 1.5"><strong>Tip:</strong> compare prices — endings like .site are often much cheaper than .com in the first year. Check the renewal price too. After buying, ask Claude to help connect it to your Cloudflare site.</span>
+  <span lang="km" style="font-size: 15px; color: #3F4553"><strong>គន្លឹះ៖</strong> ប្រៀបធៀបតម្លៃ — កន្ទុយដូចជា .site ច្រើនតែថោកជាង .com នៅឆ្នាំដំបូង។ ពិនិត្យតម្លៃបន្តឆ្នាំក្រោយផងដែរ។ ក្រោយទិញរួច សុំ Claude ជួយភ្ជាប់វាទៅគេហទំព័រ Cloudflare របស់អ្នក។</span>
+  </div>
+  </div>
+  <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+  <div style="background: #F3F4F6; border-radius: 16px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px">
+  <span style="font-size: 12px; font-weight: 700; color: #5B6170; letter-spacing: 0.08em">FREE · ឥតគិតថ្លៃ</span>
+  <span style="font-family: var(--mono); font-size: 16px; font-weight: 600; overflow-wrap: anywhere">shop-kesara.my-account.workers.dev</span>
+  </div>
+  <div style="display: flex; justify-content: center; color: #5B6170" aria-hidden="true">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"></path></svg>
+  </div>
+  <div style="background: #FFC83D; border-radius: 16px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px">
+  <span style="font-size: 12px; font-weight: 700; color: #14161A; letter-spacing: 0.08em">CUSTOM · ផ្ទាល់ខ្លួន</span>
+  <span style="font-family: var(--mono); font-size: 22px; font-weight: 600">shop-kesara.site</span>
+  </div>
+  </div>
+  </section>
+
+  <!-- 5. ASK CLAUDE -->
+  <section id="ask" class="dark" style="background: #14161A; color: #FFFFFF; border-radius: 24px; padding: clamp(22px, 4vw, 40px); display: flex; flex-direction: column; gap: 22px">
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 820px">
+  <div style="display: flex; align-items: center; gap: 14px">
+  <span style="width: 44px; height: 44px; border-radius: 12px; background: #FFC83D; color: #14161A; display: flex; align-items: center; justify-content: center; flex-shrink: 0" aria-hidden="true">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg>
+  </span>
+  <h2 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Stuck? Ask Claude.</h2>
+  </div>
+  <p lang="km" style="margin: 0; font-size: 24px; font-weight: 700">ជាប់គាំង? សួរ Claude។</p>
+  <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #E3E6EC">You can always ask Claude for help — and Claude speaks Khmer! Ask in Khmer and it will answer in Khmer.</p>
+  <p lang="km" style="margin: 0; font-size: 17px; color: #E3E6EC">អ្នកអាចសុំជំនួយពី Claude បានជានិច្ច — ហើយ Claude ចេះនិយាយភាសាខ្មែរ! សួរជាភាសាខ្មែរ វានឹងឆ្លើយតបជាភាសាខ្មែរ។</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+  <div style="background: #262A33; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px">
+  <span lang="km" style="font-size: 17px; font-weight: 600">«ពន្យល់កំហុសនេះឱ្យខ្ញុំដោយពាក្យសាមញ្ញ»</span>
+  <span style="font-size: 14px; color: #C9CDD6">"Explain this error to me in simple words"</span>
+  </div>
+  <div style="background: #262A33; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px">
+  <span lang="km" style="font-size: 17px; font-weight: 600">«ជួយខ្ញុំបង្កើតគេហទំព័រសម្រាប់ហាងរបស់ខ្ញុំ»</span>
+  <span style="font-size: 14px; color: #C9CDD6">"Help me build a website for my shop"</span>
+  </div>
+  <div style="background: #262A33; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px">
+  <span lang="km" style="font-size: 17px; font-weight: 600">«ជួយខ្ញុំភ្ជាប់ domain របស់ខ្ញុំទៅ Cloudflare»</span>
+  <span style="font-size: 14px; color: #C9CDD6">"Help me connect my domain to Cloudflare"</span>
+  </div>
+  </div>
+  </section>
+
+  <!-- BONUS: CLAUDE DESIGN -->
+  <section id="design" style="background: #FFFFFF; border: 1px solid #D9DCE3; border-radius: 24px; padding: clamp(22px, 4vw, 40px); display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+  <div style="flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px">
+  <span style="background: #FFC83D; font-weight: 800; font-size: 12px; letter-spacing: 0.08em; padding: 6px 12px; border-radius: 999px">BONUS · បន្ថែម</span>
+  <h2 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Claude Design</h2>
+  </div>
+  <p style="margin: 0; font-size: 19px; line-height: 1.55; font-weight: 500">Click <strong>Design</strong> in the Claude app sidebar to make visuals just by describing them — social media posts, posters, flyers, landing page mockups. This cheat sheet was made with it!</p>
+  <p lang="km" style="margin: 0; font-size: 18px; color: #2A2E37">ចុច <strong>Design</strong> នៅរបារចំហៀងនៃកម្មវិធី Claude ដើម្បីបង្កើតរូបភាព ដោយគ្រាន់តែពិពណ៌នាវា — ប្រកាសបណ្តាញសង្គម ផ្ទាំងរូបភាព ខិត្តប័ណ្ណ ឬគំរូគេហទំព័រ។ សន្លឹកជំនួយនេះក៏ត្រូវបានបង្កើតដោយវាដែរ!</p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 6px">
+  <div style="background: #F3F4F6; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px">
+  <span lang="km" style="font-size: 16px; font-weight: 600">«បង្កើតប្រកាស Instagram សម្រាប់ភេសជ្ជៈថ្មីរបស់ហាងកាហ្វេខ្ញុំ»</span>
+  <span style="font-size: 14px; color: #3F4553">"Make an Instagram post for my coffee shop's new drink"</span>
+  </div>
+  <div style="background: #F3F4F6; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px">
+  <span lang="km" style="font-size: 16px; font-weight: 600">«រចនាផ្ទាំងរូបភាពសម្រាប់ការបញ្ចុះតម្លៃចុងសប្តាហ៍»</span>
+  <span style="font-size: 14px; color: #3F4553">"Design a poster for our weekend sale"</span>
+  </div>
+  </div>
+  </div>
+  <figure style="flex: 1 1 240px; max-width: 300px; margin: 0; display: flex; flex-direction: column; gap: 8px">
+  <div style="position: relative">
+  <img loading="lazy" src="/cheatsheet/chat-toggle.webp" width="520" height="537" alt="Claude app sidebar with the Design item" style="width: 100%; border-radius: 14px; border: 1px solid #D9DCE3; display: block">
+  <span aria-hidden="true" style="position: absolute; left: 3%; top: 70%; width: 36%; height: 11%; border: 4px solid #FF4D2E; border-radius: 50%; box-sizing: border-box"></span>
+  </div>
+  <figcaption style="font-size: 14px; font-weight: 600">Sidebar → Design</figcaption>
+  <figcaption lang="km" style="font-size: 13px; color: #5B6170; margin-top: -6px">របារចំហៀង → Design</figcaption>
+  </figure>
+  </section>
+
+  <footer style="text-align: center; font-size: 14px; color: #5B6170; padding-top: 8px; display: flex; flex-direction: column; gap: 4px">
+  <span>Build → Save → Publish → Brand</span>
+  <span lang="km">បង្កើត → រក្សាទុក → ដាក់លើអ៊ីនធឺណិត → ឈ្មោះផ្ទាល់ខ្លួន</span>
+  </footer>
+</div>
+
+<style>
+  .cheatsheet {
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    color: #14161a;
+  }
+  .cheatsheet :global(img) { max-width: 100%; height: auto; }
+  .cheatsheet :global(a) { color: inherit; }
+  .cheatsheet :global(section) { scroll-margin-top: 5rem; }
+  .cheatsheet :global([lang='km']) { line-height: 1.75; }
+  @media (max-width: 480px) {
+    .cheatsheet :global(section) { border-radius: 18px !important; }
+  }
+
+  @media print {
+    .cheatsheet { zoom: 0.82; }
+    .cheatsheet :global(*) { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cheatsheet :global(:is(section, header, nav)) { border-radius: 12px !important; }
+    .cheatsheet :global(section) { break-inside: auto; }
+    .cheatsheet :global(:is(nav, nav a, figure, img, p, [style*='border-radius: 16px'], [style*='border-radius: 18px'], [style*='position: relative'])) {
+      break-inside: avoid;
+    }
+    .cheatsheet :global(section > div:first-child) { break-inside: avoid; }
+    .cheatsheet :global(#ask) { break-before: page; }
+    .cheatsheet :global(h2) { break-after: avoid; }
+    .cheatsheet :global(.dark) { background: #fff !important; border: 1px solid #9ca3af !important; }
+    .cheatsheet :global(:is(.dark, .dark *)) { color: #14161a !important; }
+    .cheatsheet :global(.dark [style*='#262A33']) { background: #f3f4f6 !important; }
+    .cheatsheet :global(nav a) { text-decoration: none; }
+  }
+</style>
